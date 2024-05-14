@@ -149,6 +149,8 @@ class DocumentTXT(ABC):
 
 **definição:** Dependa de abstrações, não de implementações. Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.
 
+**exemplo**
+
 ```python
 
 
