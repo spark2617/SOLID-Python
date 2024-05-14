@@ -147,8 +147,42 @@ class DocumentTXT(ABC):
 
 **Princípio da Inversão de Dependência**
 
-**definição:**Dependa de abstrações, não de implementações. Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.
+**definição:** Dependa de abstrações, não de implementações. Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.
 
+```python
+
+
+from abc import ABC, abstractmethod
+
+class NotificatorInterface(ABC):
+
+    @abstractmethod
+    def send_notification(self,message:str):
+        pass
+
+
+
+class NotificatorEmail(NotificatorInterface):
+    
+    def send_notification(self,message:str):
+        print(f"sending Email: {message}")
+
+
+class NotificatorSMS(NotificatorInterface):
+    
+    def send_notification(self,message:str):
+        print(f"sending SMS: {message}")
+
+
+
+class ClientService:
+    def __init__(self,notfiicator:NotificatorInterface) -> None:
+        self.notfiicator = notfiicator
+
+    def send(self,message:str)->None:
+        self.notfiicator.send_notification(message)
+
+```
 
 ### Conclusão
 
